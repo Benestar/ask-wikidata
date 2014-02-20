@@ -133,7 +133,7 @@
 					title: i18n.t( 'cancel' )
 				} ).append(
 					$( '<img>' ).attr( {
-						src: 'close.png',
+						src: 'res/close.png',
 						alt: i18n.t( 'cancel' ),
 						width: 20,
 						height: 20
