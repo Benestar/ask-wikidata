@@ -1,0 +1,15 @@
+﻿{
+	"title": "Frag Wikidata!",
+	"intro": "Tipp deine Frage in das Textfeld ein und drücke Enter.",
+	"enterQuestion": "Gib deine Frage hier ein",
+	"language": "Sprache: ",
+	"chooseEntity": "Bitte wähle ein Objekt vom Type __type__",
+	"cancel": "Abbrechen",
+	"alsoKnown": "Auch bekannt als: ",
+	"and": "und",
+	"unparsable": "Die Frage wurde nicht verstanden.",
+	"propertynotfound": "Die Eigenschaft \"__property__\" wurde nicht gefunden.",
+	"nodata": "Es gibt keine Informationen für __subject__.",
+	"notformatted": "Die Werte konnten nicht formatiert werden.",
+	"itemnotfound": "Das Objekt \"__item__\" wurde nicht gefunden."
+}

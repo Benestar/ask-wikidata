@@ -1,0 +1,15 @@
+﻿{
+	"title": "Ask Wikidata!",
+	"intro": "Type your question into the input box above and press enter.",
+	"enterQuestion": "Enter your question here",
+	"language": "Language: ",
+	"chooseEntity": "Please choose an entity of the type __type__",
+	"cancel": "cancel",
+	"alsoKnown": "Also known as: ",
+	"and": "and",
+	"unparsable": "The question could not be parsed.",
+	"propertynotfound": "The property \"__property__\" could not be found.",
+	"nodata": "There is no data about __subject__.",
+	"notformatted": "The values could not be formatted.",
+	"itemnotfound": "The item \"__item__\" could not be found."
+}
