@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title data-i18n="title"></title>
+		<meta charset="utf-8">
+		<link rel="stylesheet" type="text/css" href="style.css">
+		<script type="text/javascript" src="jquery.js"></script>
+		<script type="text/javascript" src="jquery.simplemodal.1.4.4.min.js"></script>
+		<script type="text/javascript" src="xregexp-all-min.js"></script>
+		<script type="text/javascript" src="i18next-1.7.1.min.js"></script>
+		<script type="text/javascript" src="api.js"></script>
+		<script type="text/javascript" src="ask.js"></script>
+		<script type="text/javascript" src="parser.js"></script>
+		<script type="text/javascript" src="index.js"></script>
+	</head>
+	<body>
+		<div id="main">
+			<h1 data-i18n="title"></h1>
+			<form id="question-form" action="javascript:;">
+				<input type="text" id="question" data-i18n="[placeholder]enterQuestion">
+				<button type="submit" id="submit"><image src="search.png" alt="Ask" width="30" height="30"></button>
+				<div id="result" class="inner"><i data-i18n="intro"></i></div>
+				<div id="footer" class="inner">
+					<span id="details"></span>
+					<span id="language-selector">
+						<label for="language" data-i18n="language"></label>
+						<select id="language">
+							<option value="de">Deutsch</option>
+							<option value="en" selected>English</option>
+						</select>
+					</span>
+				</div>
+			</form>
+		</div>
+		<p id="legal">
+			<a href="https://www.mediawiki.org/wiki/Wikimedia_Labs" title="Wikimedia Labs"><img src="https://upload.wikimedia.org/wikipedia/commons/6/65/Wikimedia_labs_small_logo.png" alt="Wikimedia Labs" width="30"></a>
+			Tool written by <a href="http://www.wikidata.org/wiki/User:Bene*" class="ltr">User:Bene*</a>. &ndash; <a href="../">Home</a>
+		</p>
+	</body>
+</html>
