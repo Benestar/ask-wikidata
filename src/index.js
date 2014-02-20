@@ -37,7 +37,6 @@
 		// Language change handler
 		$( '#language' ).change( function() {
 			i18nInit( $( '#language' ).val() );
-			//location.href = './?setLng=' + $( '#language' ).val();
 		} );
 	} );
 
@@ -79,7 +78,7 @@
 	 * @param {boolean} loading
 	 */
 	function setLoading( loading ) {
-		$( '#submit img' ).attr( 'src', loading ? 'loading.gif' : 'search.png' );
+		$( '#submit img' ).attr( 'src', loading ? 'res/loading.gif' : 'res/search.png' );
 	}
 
 	/**
