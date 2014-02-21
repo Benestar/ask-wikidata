@@ -95,7 +95,7 @@
 				format = format.replace( new RegExp( '\\$' + i, 'g' ), attributes[i] );
 			}
 			//format = format.replace( /undefined /g, '' );
-			format = format.replace( /\$\S+ /g, '' );
+			format = format.replace( /\$[\w\d-_\|]+ ?/g, '' );
 			format = format.charAt( 0 ).toUpperCase() + format.slice( 1 ); // ucfirst
 			return format;
 		},

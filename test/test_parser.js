@@ -5,11 +5,24 @@ test( 'constructor', function() {
 	equal( parser._language, 'en', 'language value' );
 } );
 
-test( 'langauge', function() {
+test( 'language', function() {
 	var parser = new Parser( 'en' );
 	equal( parser.language(), 'en', 'get language value' );
 	equal( parser.language( 'de' ), 'de', 'get and set language value' );
 	equal( parser._language, 'de', 'saved language value' );
+} );
+
+test( 'build answer', function() {
+	var parser = new Parser( 'en' );
+	var format = '$abc $foo. $hij . $xxx; $bar';
+	var attributes = {
+		'abc': 'def',
+		'foo': 'bar',
+		'bar': 'foo'
+	};
+
+	var answer = parser.buildAnswer( format, attributes );
+	equal( answer, 'Def bar. . ; foo', 'build a proper answer' );
 } );
 
 test( 'parse question (en)', function() {
@@ -18,21 +31,15 @@ test( 'parse question (en)', function() {
 	var question2 = 'Who are the presidents of the United States';
 
 	var parsed1 = parser.parseQuestion( question1 );
-	deepEqual( parsed1, {
-		question: 'Who',
-		verb: 'is',
-		item: 'Barack Obama'
-	}, 'Question containing item only' );
+	equal( parsed1.verb, 'is', 'verb' );
+	equal( parsed1.item, 'Barack Obama', 'item' );
 
 	var parsed2 = parser.parseQuestion( question2 );
-	deepEqual( parsed2, {
-		question: 'Who',
-		verb: 'are',
-		article: 'the',
-		property: 'presidents',
-		possesive: 'of the',
-		item: 'United States'
-	}, 'Question containint property and item' );
+	equal( parsed2.verb, 'are', 'verb' );
+	equal( parsed2.article, 'the', 'article' );
+	equal( parsed2.property, 'presidents', 'property' );
+	equal( parsed2.possesive, 'of the', 'possesive' );
+	equal( parsed2.item, 'United States', 'item' );
 
 	equal( parser.parseQuestion( 'Foo bar' ), false, 'Invalid value' );
 } );
@@ -43,21 +50,15 @@ test( 'parse question (de)', function() {
 	var question2 = 'Wer sind die Präsidenten der Bundesrepublik Deutschland';
 
 	var parsed1 = parser.parseQuestion( question1 );
-	deepEqual( parsed1, {
-		question: 'Wer',
-		verb: 'ist',
-		item: 'Joachim Gauck'
-	}, 'Question containing item only' );
+	equal( parsed1.verb, 'ist', 'verb' );
+	equal( parsed1.item, 'Joachim Gauck', 'item' );
 
 	var parsed2 = parser.parseQuestion( question2 );
-	deepEqual( parsed2, {
-		question: 'Wer',
-		verb: 'sind',
-		article: 'die',
-		property: 'Präsidenten',
-		possesive: 'der',
-		item: 'Bundesrepublik Deutschland'
-	}, 'Question containint property and item' );
+	equal( parsed2.verb, 'sind', 'verb' );
+	equal( parsed2.article, 'die', 'article' );
+	equal( parsed2.property, 'Präsidenten', 'property' );
+	equal( parsed2.possesive, 'der', 'possesive' );
+	equal( parsed2.item, 'Bundesrepublik Deutschland', 'item' );
 
 	equal( parser.parseQuestion( 'Foo bar' ), false, 'Invalid value' );
 } );
