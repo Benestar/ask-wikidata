@@ -1,0 +1,28 @@
+{
+  "name": "ask-wikidata",
+  "description": "Do you have a question? Ask Wikidata! This tool lets you enter a question and tries to parse it. If it understands what you want to know, it will search for this information on Wikidata.",
+  "version": "0.1",
+  "keywords": [
+    "wikidata"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/Benestar/ask-wikidata.git"
+  },
+  "author": [
+    "name": "Bene*",
+    "email": "benestar.wikimedia@gmail.com",
+    "web": "https://github.com/Benestar"
+  ],
+  "demos": [
+    "https://tools.wmflabs.org/bene/ask/"
+  ],
+  "licenses": [
+    {
+      "name": "GNU GPL v2+"
+    }
+  ],
+  "scripts": {
+    "test": "grunt test"
+  }
+}
