@@ -1,7 +1,7 @@
 {
   "name": "ask-wikidata",
   "description": "Do you have a question? Ask Wikidata! This tool lets you enter a question and tries to parse it. If it understands what you want to know, it will search for this information on Wikidata.",
-  "version": "0.1",
+  "version": "0.0.1",
   "keywords": [
     "wikidata"
   ],
@@ -19,7 +19,8 @@
   ],
   "licenses": [
     {
-      "name": "GNU GPL v2+"
+      "type": "GNU GPL v2+",
+	  "url": "http://www.gnu.org/licenses/gpl-2.0.html"
     }
   ],
   "scripts": {
