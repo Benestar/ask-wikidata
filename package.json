@@ -9,11 +9,11 @@
     "type": "git",
     "url": "git://github.com/Benestar/ask-wikidata.git"
   },
-  "author": [
+  "author": {
     "name": "Bene*",
     "email": "benestar.wikimedia@gmail.com",
     "web": "https://github.com/Benestar"
-  ],
+  },
   "demos": [
     "https://tools.wmflabs.org/bene/ask/"
   ],
