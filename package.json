@@ -25,5 +25,12 @@
   ],
   "scripts": {
     "test": "grunt test"
+  },
+  "dependencies": {},
+  "devDependencies": {
+    "qunit": "~0.5.15",
+    "grunt": "~0.4.1",
+    "grunt-contrib-qunit": "~0.2.1",
+    "qunitjs": "~1.11.0"
   }
 }
