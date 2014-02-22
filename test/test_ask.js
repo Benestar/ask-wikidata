@@ -52,7 +52,8 @@ asyncTest( 'format datavalues', function() {
 		return ask.formatDatavalues( [{"value":{"entity-type":"item","numeric-id":1208},"type":"wikibase-entityid"},{"value":{"entity-type":"item","numeric-id":1201238},"type":"wikibase-entityid"}] );
 	} )
 	.then( function( values ) {
-		//deepEqual( values, [ 'Brandenburg', 'Q1201238' ], 'Check entity id value' );
+		// this test fails perhaps because travis does not know the "arguments" feature used in ask.js on line 40. Tips are welcome.
+		deepEqual( values, [ 'Brandenburg', 'Q1201238' ], 'Check entity id value' );
 		return ask.formatDatavalues( [{"value":{"time":"+00000002001-06-16T00:00:00Z","timezone":0,"before":0,"after":0,"precision":11,"calendarmodel":"http://www.wikidata.org/entity/Q1985727"},"type":"time"}] );
 	} )
 	.then( function( values ) {

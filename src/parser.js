@@ -103,6 +103,7 @@
 						var parts = regex.exec( question, reg );
 						var result = $.extend( {}, regexes[r], parts );
 						deferred.resolve( result );
+						return;
 					}
 				}
 				deferred.reject();
