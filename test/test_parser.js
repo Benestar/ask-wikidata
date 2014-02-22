@@ -25,40 +25,56 @@ test( 'build answer', function() {
 	equal( answer, 'Def bar. . ; foo', 'build a proper answer' );
 } );
 
-test( 'parse question (en)', function() {
+asyncTest( 'parse question (en)', function() {
+	expect( 8 );
+
 	var parser = new Parser( 'en' );
 	var question1 = 'Who is Barack Obama?';
 	var question2 = 'Who are the presidents of the United States';
 
-	var parsed1 = parser.parseQuestion( question1 );
-	equal( parsed1.verb, 'is', 'verb' );
-	equal( parsed1.item, 'Barack Obama', 'item' );
-
-	var parsed2 = parser.parseQuestion( question2 );
-	equal( parsed2.verb, 'are', 'verb' );
-	equal( parsed2.article, 'the', 'article' );
-	equal( parsed2.property, 'presidents', 'property' );
-	equal( parsed2.possesive, 'of the', 'possesive' );
-	equal( parsed2.item, 'United States', 'item' );
-
-	equal( parser.parseQuestion( 'Foo bar' ), false, 'Invalid value' );
+	$.when( parser.parseQuestion( question1 ) )
+	.then( function( parsed1 ) {
+		equal( parsed1.verb, 'is', 'verb' );
+		equal( parsed1.item, 'Barack Obama', 'item' );
+		return parser.parseQuestion( question2 );
+	} )
+	.then( function( parsed2 ) {
+		equal( parsed2.verb, 'are', 'verb' );
+		equal( parsed2.article, 'the', 'article' );
+		equal( parsed2.property, 'presidents', 'property' );
+		equal( parsed2.possesive, 'of the', 'possesive' );
+		equal( parsed2.item, 'United States', 'item' );
+		return parser.parseQuestion( 'Foo bar' );
+	} )
+	.then( null, function() {
+		ok( true, 'Invalid value' );
+	} )
+	.always( start );
 } );
 
-test( 'parse question (de)', function() {
+asyncTest( 'parse question (de)', function() {
+	expect( 8 );
+
 	var parser = new Parser( 'de' );
 	var question1 = 'Wer ist Joachim Gauck?';
 	var question2 = 'Wer sind die Präsidenten der Bundesrepublik Deutschland';
 
-	var parsed1 = parser.parseQuestion( question1 );
-	equal( parsed1.verb, 'ist', 'verb' );
-	equal( parsed1.item, 'Joachim Gauck', 'item' );
-
-	var parsed2 = parser.parseQuestion( question2 );
-	equal( parsed2.verb, 'sind', 'verb' );
-	equal( parsed2.article, 'die', 'article' );
-	equal( parsed2.property, 'Präsidenten', 'property' );
-	equal( parsed2.possesive, 'der', 'possesive' );
-	equal( parsed2.item, 'Bundesrepublik Deutschland', 'item' );
-
-	equal( parser.parseQuestion( 'Foo bar' ), false, 'Invalid value' );
+	$.when( parser.parseQuestion( question1 ) )
+	.then( function( parsed1 ) {
+		equal( parsed1.verb, 'ist', 'verb' );
+		equal( parsed1.item, 'Joachim Gauck', 'item' );
+		return parser.parseQuestion( question2 );
+	} )
+	.then( function( parsed2 ) {
+		equal( parsed2.verb, 'sind', 'verb' );
+		equal( parsed2.article, 'die', 'article' );
+		equal( parsed2.property, 'Präsidenten', 'property' );
+		equal( parsed2.possesive, 'der', 'possesive' );
+		equal( parsed2.item, 'Bundesrepublik Deutschland', 'item' );
+		return parser.parseQuestion( 'Foo bar' );
+	} )
+	.then( null, function() {
+		ok( true, 'Invalid value' );
+	} )
+	.always( start );
 } );

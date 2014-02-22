@@ -62,6 +62,7 @@
 			api.language( lang );
 			parser.language( lang );
 			$( '#language' ).val( lang );
+			showIntro();
 
 			// Question param handler
 			// Note: this must be called here as the possible
@@ -194,12 +195,21 @@
 	 */
 	function handleQuestion( question ) {
 		// parse the question
-		var parsed = parser.parseQuestion( question );
-		// cancel if the question could not be parsed
-		if ( !parsed ) {
+		parser.parseQuestion( question )
+		.then( function( parsed ) {
+			handleParsed( parsed );
+		}, function() {
+			// the question could not be parsed
 			showError( i18n.t( 'unparsable' ) );
-			return;
-		}
+		} );
+	}
+
+	/**
+	 * Handles the parsed parts of the question.
+	 *
+	 * @param {object} parsed
+	 */
+	function handleParsed( parsed ) {
 		// search the item
 		ask.searchEntity( 'item', parsed.item )
 		.then( function( itemId ) {

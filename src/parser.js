@@ -56,7 +56,7 @@
 		 * Loads the patterns.
 		 */
 		_initPatterns: function() {
-			$.getJSON( 'patterns/' + this._language + '.json', function( data ) {
+			this._promise = $.getJSON( 'patterns/' + this._language + '.json', function( data ) {
 				regexes = data.regexes;
 				attributes = data.attributes;
 			} );
@@ -87,23 +87,27 @@
 		 * @return {object}
 		 */
 		parseQuestion: function( question ) {
-			question = question.trim();
-			if ( question.indexOf( '?', question.length - 1 ) !== -1 ) {
-				question = question.substring( 0, question.length - 1 );
-			}
-			for ( var r in regexes ) {
-				var regString = regexes[r].regex;
-				for ( var a in attributes ) {
-					regString = regString.replace( new RegExp( '\\$' + a, 'g' ), attributes[a] );
+			var deferred = $.Deferred();
+			this._promise.then( function() {
+				question = question.trim();
+				if ( question.indexOf( '?', question.length - 1 ) !== -1 ) {
+					question = question.substring( 0, question.length - 1 );
 				}
-				var reg = regex( '^' + regString + '$', 'i' );
-				if ( reg.test( question ) ) {
-					var parts = regex.exec( question, reg );
-					var result = $.extend( {}, regexes[r], parts );
-					return result;
+				for ( var r in regexes ) {
+					var regString = regexes[r].regex;
+					for ( var a in attributes ) {
+						regString = regString.replace( new RegExp( '\\$' + a, 'g' ), attributes[a] );
+					}
+					var reg = regex( '^' + regString + '$', 'i' );
+					if ( reg.test( question ) ) {
+						var parts = regex.exec( question, reg );
+						var result = $.extend( {}, regexes[r], parts );
+						deferred.resolve( result );
+					}
 				}
-			}
-			return false;
+				deferred.reject();
+			} );
+			return deferred.promise();
 		}
 	} );
 
