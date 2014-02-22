@@ -20,7 +20,7 @@
   "licenses": [
     {
       "type": "GNU GPL v2+",
-	  "url": "http://www.gnu.org/licenses/gpl-2.0.html"
+      "url": "http://www.gnu.org/licenses/gpl-2.0.html"
     }
   ],
   "scripts": {
@@ -29,7 +29,7 @@
   "dependencies": {},
   "devDependencies": {
     "qunit": "~0.5.15",
-    "grunt": "~0.4.1",
+    "grunt": "~0.4.2",
     "grunt-contrib-qunit": "~0.2.1",
     "qunitjs": "~1.11.0"
   }

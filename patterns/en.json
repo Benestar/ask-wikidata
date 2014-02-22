@@ -1,0 +1,46 @@
+{
+	"regexes": [
+		{
+			"regex": "when $verb_art $item born",
+			"property": "date of birth",
+			"callback": "$article $item $verb born on $value."
+		},
+		{
+			"regex": "where $verb_art $item born",
+			"property": "place of birth",
+			"callback": "$article $item $verb born in $value."
+		},
+		{
+			"regex": "when died $item",
+			"property": "date of death",
+			"callback": "$article $item died on $value."
+		},
+		{
+			"regex": "where died $item",
+			"property": "place of death",
+			"callback": "$article $item died in $value."
+		},
+		{
+			"regex": "who $verb_art $item married to",
+			"property": "spouse",
+			"callback": "$article $item $verb married to $value."
+		},
+		{
+			"regex": "where $verb_art $item",
+			"article": "the",
+			"property": "location",
+			"possesive": "of"
+		},
+		{
+			"regex": "(what|when|where|why|who|whose|which|how|how much|how many) $verb_art (?<property>.+?) $possesive $item"
+		},
+		{
+			"regex": "(what|when|where|why|who|whose|which|how|how much|how many) $verb_art $item"
+		}
+	],
+	"attributes": {
+		"verb_art": "(?<verb>is|was|are|were)( (?<article>a|an|the))?",
+		"item": "(?<item>.+?)",
+		"possesive": "(?<possesive>(of|from|by)( (a|an|the))?)"
+	}
+}

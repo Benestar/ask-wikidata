@@ -65,7 +65,9 @@
 
 			// Question param handler
 			// Note: this must be called here as the possible
-			// error messages should already be available
+			//       error messages should already be available
+			// Bug: when selecting a new language, the patterns
+			//      are not available here yet
 			if ( $( '#question' ).val() ) {
 				$( '#question-form' ).submit();
 			}

@@ -16,47 +16,14 @@
 	 *
 	 * @var {object}
 	 */
-	// @todo: implement callbacks!
-	var regexes = {
-		en: [
-			{ regex: 'when $verb_art $item born', property: 'date of birth', callback: '$article $item $verb born on $value.' },
-			{ regex: 'where $verb_art $item born', property: 'place of birth', callback: '$article $item $verb born in $value.' },
-			{ regex: 'when died $item', property: 'date of death', callback: '$article $item died on $value.' },
-			{ regex: 'where died $item', property: 'place of death', callback: '$article $item died in $value.' },
-			{ regex: 'who $verb_art $item married to', property: 'spouse', callback: '$article $item $verb married to $value.' },
-			{ regex: 'where $verb_art $item', article: 'the', property: 'location', possesive: 'of' }, // @todo: improve
-			{ regex: '(what|when|where|why|who|whose|which|how|how much|how many) $verb_art (?<property>.+?) $possesive $item' },
-			{ regex: '(what|when|where|why|who|whose|which|how|how much|how many) $verb_art $item' },
-		],
-		de: [
-			{ regex: 'wann $verb_art $item (?<2verb>geboren( worden)?)', property: 'Geburtsdatum', callback: '$article $item $verb am $value $2verb.' },
-			{ regex: 'wo $verb_art $item (?<2verb>geboren( worden)?)', property: 'Geburtsort', callback: '$article $item $verb in $value $2verb.' },
-			{ regex: 'wann starb $item', property: 'Sterbedatum', callback: '$article $item starb am $value.' },
-			{ regex: 'wo starb $item', property: 'Sterbeort', callback: '$article $item starb in $value.' },
-			{ regex: 'mit wem $verb_art $item verheiratet', property: 'Ehepartner', callback: '$article $item $verb mit $value verheiratet.' },
-			{ regex: 'wo $verb_art $item', article: 'die', property: 'Position', possesive: 'von' }, // @todo: improve
-			{ regex: '(was|wann|wo|wieso|wer|wessen|welches|wie|wie viel|wie viele) $verb_art (?<property>.+?) $possesive $item' },
-			{ regex: '(was|wann|wo|wieso|wer|wessen|welches|wie|wie viel|wie viele) $verb_art $item' },
-		]
-	};
+	var regexes = {};
 
 	/**
 	 * Contains shortcut attributes that can be used in the reges.
 	 *
 	 * @var {object}
 	 */
-	var attributes = {
-		en: {
-			verb_art: '(?<verb>is|was|are|were)( (?<article>a|an|the))?',
-			item: '(?<item>.+?)',
-			possesive: '(?<possesive>(of|from|by)( (a|an|the))?)',
-		},
-		de: {
-			verb_art: '(?<verb>ist|war|sind|waren|wurde|wurden)( (?<article>ein|eine|eines|der|die|das))?',
-			item: '(?<item>.+?)',
-			possesive: '(?<possesive>(von|an|bei|der|eines|einer)( (ein|eine|eines|einem|einem|dem|den))?)',
-		}
-	};
+	var attributes = {};
 
 	/**
 	 * Constructor to create a new parser object.
@@ -67,6 +34,7 @@
 	 */
 	ns.Parser = function( language ) {
 		this._language = language;
+		this._initPatterns();
 	};
 
 	$.extend( ns.Parser.prototype, {
@@ -79,8 +47,19 @@
 		language: function( language ) {
 			if ( language ) {
 				this._language = language;
+				this._initPatterns();
 			}
 			return this._language;
+		},
+
+		/**
+		 * Loads the patterns.
+		 */
+		_initPatterns: function() {
+			$.getJSON( 'patterns/' + this._language + '.json', function( data ) {
+				regexes = data.regexes;
+				attributes = data.attributes;
+			} );
 		},
 
 		/**
@@ -112,17 +91,15 @@
 			if ( question.indexOf( '?', question.length - 1 ) !== -1 ) {
 				question = question.substring( 0, question.length - 1 );
 			}
-			var r = regexes[this._language];
-			for ( var i in r ) {
-				var regString = r[i].regex;
-				var a = attributes[this._language];
-				for ( var j in a ) {
-					regString = regString.replace( new RegExp( '\\$' + j, 'g' ), a[j] );
+			for ( var r in regexes ) {
+				var regString = regexes[r].regex;
+				for ( var a in attributes ) {
+					regString = regString.replace( new RegExp( '\\$' + a, 'g' ), attributes[a] );
 				}
 				var reg = regex( '^' + regString + '$', 'i' );
 				if ( reg.test( question ) ) {
 					var parts = regex.exec( question, reg );
-					var result = $.extend( {}, r[i], parts );
+					var result = $.extend( {}, regexes[r], parts );
 					return result;
 				}
 			}

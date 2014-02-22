@@ -1,0 +1,46 @@
+{
+	"regexes": [
+		{
+			"regex": "wann $verb_art $item (?<2verb>geboren( worden)?)",
+			"property": "Geburtsdatum",
+			"callback": "$article $item $verb am $value $2verb."
+		},
+		{
+			"regex": "wo $verb_art $item (?<2verb>geboren( worden)?)",
+			"property": "Geburtsort",
+			"callback": "$article $item $verb in $value $2verb."
+		},
+		{
+			"regex": "wann starb $item",
+			"property": "Sterbedatum",
+			"callback": "$article $item starb am $value."
+		},
+		{
+			"regex": "wo starb $item",
+			"property": "Sterbeort",
+			"callback": "$article $item starb in $value."
+		},
+		{
+			"regex": "mit wem $verb_art $item verheiratet",
+			"property": "Ehepartner",
+			"callback": "$article $item $verb mit $value verheiratet."
+		},
+		{
+			"regex": "wo $verb_art $item",
+			"article": "die",
+			"property": "Position",
+			"possesive": "von"
+		},
+		{
+			"regex": "(was|wann|wo|wieso|wer|wessen|welches|wie|wie viel|wie viele) $verb_art (?<property>.+?) $possesive $item"
+		},
+		{
+			"regex": "(was|wann|wo|wieso|wer|wessen|welches|wie|wie viel|wie viele) $verb_art $item"
+		}
+	],
+	"attributes": {
+		"verb_art": "(?<verb>ist|war|sind|waren|wurde|wurden)( (?<article>ein|eine|eines|der|die|das))?",
+		"item": "(?<item>.+?)",
+		"possesive": "(?<possesive>(von|an|bei|der|eines|einer)( (ein|eine|eines|einem|einem|dem|den))?)"
+	}
+}
