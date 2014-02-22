@@ -43,7 +43,7 @@ asyncTest( 'get datavalues', function() {
 } );
 
 asyncTest( 'format datavalues', function() {
-	expect( 4 - 1 );
+	expect( 4 );
 
 	var ask = new Ask( new Api( 'https://www.wikidata.org/w/api.php', 'en' ) );
 	$.when( ask.formatDatavalues( [] ) )
