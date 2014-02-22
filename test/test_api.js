@@ -30,15 +30,23 @@ asyncTest( '_get', function() {
 // Note: perhaps it would be best to query the data using getJSON on our own, too, but this does not really test something.
 
 asyncTest( 'format datavalue', function() {
-	expect( 1 );
+	expect( 2 );
 
 	var api = new Api( 'https://www.wikidata.org/w/api.php', 'en' );
-	api.formatDatavalue( {"value":{"time":"+00000002001-06-16T00:00:00Z","timezone":0,"before":0,"after":0,"precision":11,"calendarmodel":"http://www.wikidata.org/entity/Q1985727"},"type":"time"} )
-	.done( function( data ) {
+	$.when( api.formatDatavalue( {"value":{"time":"+00000002001-06-16T00:00:00Z","timezone":0,"before":0,"after":0,"precision":11,"calendarmodel":"http://www.wikidata.org/entity/Q1985727"},"type":"time"} ) )
+	.then( function( data ) {
 		deepEqual(
 			data,
 			{"warnings":{"main":{"*":"Unrecognized parameter: '_'"}},"result":"16 June 2001"},
-			'Checking result'
+			'time data value'
+		);
+		return api.formatDatavalue( {"value":{"entity-type":"item","numeric-id":1208},"type":"wikibase-entityid"} );
+	} )
+	.then( function( data ) {
+		deepEqual(
+			data,
+			{"warnings":{"main":{"*":"Unrecognized parameter: '_'"}},"result":"Brandenburg"},
+			'entity id data value'
 		);
 	} )
 	.always( start );
