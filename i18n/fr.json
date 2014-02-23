@@ -1,15 +1,15 @@
 {
-  "title": "Demandez à Wikidata!",
-  "intro": "Tapez votre question dans l'espace ci-dessus et pressez Entrer.",
-  "enterQuestion": "Entrez votre question ici",
-  "language": "Langue: ",
-  "chooseEntity": "Choisissez une entité de type __type__",
-  "cancel": "annuler",
-  "alsoKnown": "Aussi appelé: ",
-  "and": "et",
-  "unparsable": "La question n'a pas pu être parsée.",
-  "propertynotfound": "La propriété \"__property__\" n'a pas été trouvée.",
-  "nodata": "Aucune donnée disponible sur __subject__.",
-  "notformatted": "Les valeurs n'ont pas pu être formatées.",
-  "itemnotfound": "L'article \"__item__\" n'a pas été trouvé."
+	"title": "Demandez à Wikidata!",
+	"intro": "Tapez votre question dans l'espace ci-dessus et pressez Entrer.",
+	"enterQuestion": "Entrez votre question ici",
+	"language": "Langue: ",
+	"chooseEntity": "Choisissez une entité de type __type__",
+	"cancel": "annuler",
+	"alsoKnown": "Aussi appelé: ",
+	"and": "et",
+	"unparsable": "La question n'a pas pu être parsée.",
+	"propertynotfound": "La propriété \"__property__\" n'a pas été trouvée.",
+	"nodata": "Aucune donnée disponible sur __subject__.",
+	"notformatted": "Les valeurs n'ont pas pu être formatées.",
+	"itemnotfound": "L'article \"__item__\" n'a pas été trouvé."
 }
