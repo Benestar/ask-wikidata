@@ -131,7 +131,7 @@
 		var $dialog = $( '<div>' ).append(
 			$( '<h3>' ).attr( 'class', 'dialog-header' ).text( i18n.t( 'chooseEntity', { type: type } ) ).append(
 				$( '<a>' ).attr( {
-					href: 'javascript:;',
+					href: '#',
 					class: 'close',
 					title: i18n.t( 'cancel' )
 				} ).append(
@@ -144,23 +144,25 @@
 				)
 				.click( function() {
 					$.modal.close();
+					return false;
 				} )
 			)
 		);
+		/* jshint -W083 */
 		for ( var i in entities ) {
-			$dialog.append(
-				$( '<p>', { class: 'entity-select' } )
-				.append( $( '<span>', { class: 'label' } ).text( entities[i].label ) )
-				.append( $( '<br>' ) )
-				.append( $( '<span>', { class: 'description' } ).text( entities[i].description ) )
-				.append( $( '<br>' ) )
-				.append( $( '<span>', { class: 'aliases' } ).text( entities[i].aliases ? i18n.t( 'alsoKnown' ) + entities[i].aliases.join( ', ' ) : '' ) )
-				.click( { id: entities[i].id }, function( e ) {
-					deferred.resolve( e.data.id );
-					$.modal.close();
-				} )
-			);
+			$( '<p>', { class: 'entity-select' } )
+			.append( $( '<span>', { class: 'label' } ).text( entities[i].label ) )
+			.append( $( '<br>' ) )
+			.append( $( '<span>', { class: 'description' } ).text( entities[i].description ) )
+			.append( $( '<br>' ) )
+			.append( $( '<span>', { class: 'aliases' } ).text( entities[i].aliases ? i18n.t( 'alsoKnown' ) + entities[i].aliases.join( ', ' ) : '' ) )
+			.click( { id: entities[i].id }, function( e ) {
+				deferred.resolve( e.data.id );
+				$.modal.close();
+			} )
+			.appendTo( $dialog );
 		}
+		/* jshint +W083 */
 		$dialog.modal( {
 			maxWidth: 700,
 			onClose: function() {
@@ -244,7 +246,7 @@
 					// display the values
 					parsed.value = combineValues( formattedValues );
 					console.log( parsed );
-					var format = parsed.callback ? parsed.callback : '$article $property $possesive $item $verb $value.'
+					var format = parsed.callback ? parsed.callback : '$article $property $possesive $item $verb $value.';
 					var answer = parser.buildAnswer( format, parsed );
 					showResult( answer );
 				}, function( state ) {

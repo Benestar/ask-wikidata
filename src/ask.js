@@ -119,9 +119,9 @@
 				} else if ( data.search.length === 1 ) {
 					// resolve if exactly one entity was found
 					deferred.resolve( data.search[0].id );
-				} else if ( data.search.length > 1
-					&& data.search[0].label.toLowerCase().indexOf( search.toLowerCase() ) != -1
-					&& data.search[1].label.toLowerCase().indexOf( search.toLowerCase() ) == -1
+				} else if ( data.search.length > 1 &&
+					data.search[0].label.toLowerCase().indexOf( search.toLowerCase() ) != -1 &&
+					data.search[1].label.toLowerCase().indexOf( search.toLowerCase() ) == -1
 				) {
 					// resolve if the first value's label contains the search term and the second one's doesn't
 					deferred.resolve( data.search[0].id );
