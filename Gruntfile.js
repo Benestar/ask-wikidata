@@ -8,7 +8,7 @@ module.exports = function ( grunt ) {
 			all: [ 'test/qunit.html' ]
 		},
 		jshint: {
-			all: [ 'Gruntfile.js', 'src/*.json', 'test/test_*.json' ]
+			all: [ 'Gruntfile.js', 'src/*.js', 'test/test_*.js' ]
 		},
 		jsonlint: {
 			all: [ 'package.json', 'i18n/*.json', 'patterns/*.json' ]
