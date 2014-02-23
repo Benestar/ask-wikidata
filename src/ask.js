@@ -38,14 +38,15 @@
 			}
 			$.when.apply( $, deferredsArray )
 			.then( function( /* arguments */ ) {
+				var args = Array.prototype.slice.call( arguments );
 				if ( values.length > 1 ) {
 					var formattedValues = [];
-					for ( var i in arguments ) {
-						formattedValues.push( arguments[i][0].result );
+					for ( var i in args ) {
+						formattedValues.push( args[i][0].result );
 					}
 					deferred.resolve( formattedValues );
 				} else if ( values.length > 0 ) {
-					deferred.resolve( [ arguments[0].result ] );
+					deferred.resolve( [ args[0].result ] );
 				} else {
 					deferred.reject();
 				}
