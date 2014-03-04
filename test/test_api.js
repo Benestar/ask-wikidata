@@ -34,9 +34,9 @@ asyncTest( 'format datavalue', function() {
 	var datavalue2 = {"value":{"entity-type":"item","numeric-id":1208},"type":"wikibase-entityid"};
 	$.when(
 		api.formatDatavalue( datavalue1 ),
-		$.getJSON( 'https://www.wikidata.org/w/api.php?action=wbformatvalue&generate=text%2Fplain&datavalue=' + encodeURIComponent( datavalue1 ) + '&options=%7B%22lang%22%3A%22en%22%2C%22geoformat%22%3A%22dms%22%7D&format=json&callback=?' ),
+		$.getJSON( 'https://www.wikidata.org/w/api.php?action=wbformatvalue&generate=text%2Fplain&datavalue=' + encodeURIComponent( JSON.stringify( datavalue1 ) ) + '&options=%7B%22lang%22%3A%22en%22%2C%22geoformat%22%3A%22dms%22%7D&format=json&callback=?' ),
 		api.formatDatavalue( datavalue2 ),
-		$.getJSON( 'https://www.wikidata.org/w/api.php?action=wbformatvalue&generate=text%2Fplain&datavalue=' + encodeURIComponent( datavalue2 ) + '&options=%7B%22lang%22%3A%22en%22%2C%22geoformat%22%3A%22dms%22%7D&format=json&callback=?')
+		$.getJSON( 'https://www.wikidata.org/w/api.php?action=wbformatvalue&generate=text%2Fplain&datavalue=' + encodeURIComponent( JSON.stringify( datavalue2 ) ) + '&options=%7B%22lang%22%3A%22en%22%2C%22geoformat%22%3A%22dms%22%7D&format=json&callback=?')
 	)
 	.then( function( data1, expected1, data2, expected2 ) {
 		deepEqual(
