@@ -98,7 +98,8 @@ asyncTest( 'search entities', function() {
 		$.getJSON( 'https://www.wikidata.org/w/api.php?action=wbsearchentities&language=en&search=United+States&type=item&format=json&callback=?' ),
 		api.searchEntities( 'property', 'location' ) ),
 		$.getJSON( 'https://www.wikidata.org/w/api.php?action=wbsearchentities&language=en&search=location&type=property&format=json&callback=?' )
-	.done( function( data1, expected1, data2, expected2 ) {
+	)
+	.then( function( data1, expected1, data2, expected2 ) {
 		deepEqual(
 			data1[0],
 			expected1[0],
