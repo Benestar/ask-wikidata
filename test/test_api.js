@@ -96,7 +96,7 @@ asyncTest( 'search entities', function() {
 	$.when(
 		api.searchEntities( 'item', 'United States' ),
 		$.getJSON( 'https://www.wikidata.org/w/api.php?action=wbsearchentities&language=en&search=United+States&type=item&format=json&callback=?' ),
-		api.searchEntities( 'property', 'location' ) ),
+		api.searchEntities( 'property', 'location' ),
 		$.getJSON( 'https://www.wikidata.org/w/api.php?action=wbsearchentities&language=en&search=location&type=property&format=json&callback=?' )
 	)
 	.then( function( data1, expected1, data2, expected2 ) {
