@@ -28,7 +28,7 @@
 		{
 			"regex": "where $verb_art $item",
 			"article": "the",
-			"property": "location",
+			"property": "is located in",
 			"possesive": "of"
 		},
 		{
