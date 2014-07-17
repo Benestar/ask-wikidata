@@ -1,5 +1,5 @@
 /**
- * Contains all the ui stuff
+ * Contains all the UI stuff
  * Dependencies:
  * # jQuery < http://jquery.com/ >
  * # i18next < http://i18next.com/ >
@@ -18,7 +18,7 @@
 	var ask = new Ask( api );
 	var parser = new Parser( 'en' );
 
-	// init i18n as soon as possible
+	// Initialize i18n as soon as possible
 	i18nInit();
 
 	$( function() {
@@ -41,7 +41,7 @@
 	} );
 
 	/**
-	 * Inits the i18n extension.
+	 * Initializes the i18n extension.
 	 *
 	 * @param {string} lng
 	 */
@@ -53,7 +53,7 @@
 		if ( lng ) {
 			options.lng = lng;
 		}
-		// Init i18n
+		// Initialize i18n
 		i18n.init( options, function() {
 			// Set messages
 			$( 'title' ).i18n();
@@ -191,7 +191,7 @@
 	}
 
 	/**
-	 * Handles the questios.
+	 * Handles the questions.
 	 *
 	 * @param {string} question
 	 */
@@ -205,6 +205,15 @@
 			showError( i18n.t( 'unparsable' ) );
 		} );
 	}
+	
+	/**
+	 * Builds the links for the details.
+	 *
+	 * @param {string} link target/label
+	 */
+	function linkToWD( target ) {
+		return '<a href="https://wikidata.org/wiki/' + target + '">' + target + '</a>';
+	}
 
 	/**
 	 * Handles the parsed parts of the question.
@@ -215,13 +224,13 @@
 		// search the item
 		ask.searchEntity( 'item', parsed.item )
 		.then( function( itemId ) {
-			showDetails( 'Item: ' + itemId );
+			showDetails( 'Item: ' + linkToWD( itemId ) );
 			// question after a specific property => must be queried
 			if ( parsed.property ) {
 				// search the property
 				ask.searchEntity( 'property', parsed.property )
 				.then( function( propertyId ) {
-					showDetails( ', Property: ' + propertyId );
+					showDetails( ', Property: ' + linkToWD( 'Property:' + propertyId ) );
 					// get the claims
 					return ask.getDatavalues( itemId, propertyId );
 				}, function( notfound ) {
