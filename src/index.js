@@ -211,8 +211,8 @@
 	 *
 	 * @param {string} link target/label
 	 */
-	function linkToWD( target ) {
-		return '<a href="https://wikidata.org/wiki/' + target + '">' + target + '</a>';
+	function linkToWD( target, label ) {
+		return '<a href="https://wikidata.org/wiki/' + target + '">' + (label||target) + '</a>';
 	}
 
 	/**
@@ -230,7 +230,7 @@
 				// search the property
 				ask.searchEntity( 'property', parsed.property )
 				.then( function( propertyId ) {
-					showDetails( ', Property: ' + linkToWD( 'Property:' + propertyId ) );
+					showDetails( ', Property: ' + linkToWD( 'Property:' + propertyId, propertyId ) );
 					// get the claims
 					return ask.getDatavalues( itemId, propertyId );
 				}, function( notfound ) {
