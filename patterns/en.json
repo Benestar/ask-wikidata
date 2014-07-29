@@ -27,9 +27,8 @@
 		},
 		{
 			"regex": "where $verb_art $item",
-			"article": "the",
-			"property": "location",
-			"possesive": "of"
+			"property": "is located in",
+			"callback": "$article $item $property $value."
 		},
 		{
 			"regex": "(what|when|where|why|who|whose|which|how|how much|how many) $verb_art (?<property>.+?) $possesive $item"
