@@ -11,12 +11,12 @@
 			"callback": "$article $item $verb born in $value."
 		},
 		{
-			"regex": "when died $item",
+			"regex": "when did $item die",
 			"property": "date of death",
 			"callback": "$article $item died on $value."
 		},
 		{
-			"regex": "where died $item",
+			"regex": "where did $item die",
 			"property": "place of death",
 			"callback": "$article $item died in $value."
 		},
