@@ -8,7 +8,7 @@
 "alsoKnown": "Ook bekend als: ",
 "and": "en",
 "unparsable": "De vraag kon niet worden geparset.",
-"propertynotfound": "De eigenschap \"__property__\" kon niet worden gevorden.",
+"propertynotfound": "De eigenschap \"__property__\" kon niet worden gevonden.",
 "nodata": "Er zijn geen gegevens over __subject__.",
 "notformatted": "The values could not be formatted.",
 "itemnotfound": "Het item \"__item__\" kon niet worden gevonden."
