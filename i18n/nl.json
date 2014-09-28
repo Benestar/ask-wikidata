@@ -1,0 +1,15 @@
+{
+"title": "Vraag het Wikidata!",
+"intro": "Vul je vraag hierboven in en druk op enter.",
+"enterQuestion": "Vul je vraag hier in",
+"language": "Taal: ",
+"chooseEntity": "Please choose an entity of the type __type__",
+"cancel": "annuleren",
+"alsoKnown": "Ook bekend als: ",
+"and": "en",
+"unparsable": "De vraag kon niet worden geparset.",
+"propertynotfound": "De eigenschap \"__property__\" kon niet worden gevonden.",
+"nodata": "Er zijn geen gegevens over __subject__.",
+"notformatted": "The values could not be formatted.",
+"itemnotfound": "Het item \"__item__\" kon niet worden gevonden."
+}
