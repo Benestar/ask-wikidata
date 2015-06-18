@@ -1,38 +1,32 @@
 {
-  "name": "ask-wikidata",
-  "description": "Do you have a question? Ask Wikidata! This tool lets you enter a question and tries to parse it. If it understands what you want to know, it will search for this information on Wikidata.",
-  "version": "0.0.1",
-  "keywords": [
-    "wikidata"
-  ],
-  "repository": {
-    "type": "git",
-    "url": "git://github.com/Benestar/ask-wikidata.git"
-  },
-  "author": {
-    "name": "Bene*",
-    "email": "benestar.wikimedia@gmail.com",
-    "web": "https://github.com/Benestar"
-  },
-  "demos": [
-    "https://tools.wmflabs.org/bene/ask/"
-  ],
-  "licenses": [
-    {
-      "type": "GNU GPL v2+",
-      "url": "http://www.gnu.org/licenses/gpl-2.0.html"
-    }
-  ],
-  "scripts": {
-    "test": "grunt test"
-  },
-  "dependencies": {},
-  "devDependencies": {
-    "qunit": "~0.5.15",
-    "grunt": "~0.4.2",
-    "grunt-contrib-qunit": "~0.2.1",
-	"grunt-jsonlint": "~1.0.4",
-	"grunt-contrib-jshint": "~0.7.2",
-    "qunitjs": "~1.11.0"
-  }
+	"name": "ask-wikidata",
+	"description": "Do you have a question? Ask Wikidata! This tool lets you enter a question and tries to parse it. If it understands what you want to know, it will search for this information on Wikidata.",
+	"version": "0.1",
+	"keywords": [
+		"wikidata"
+	],
+	"repository": {
+		"type": "git",
+		"url": "git://github.com/Benestar/ask-wikidata.git"
+	},
+	"author": {
+		"name": "Bene*",
+		"email": "benestar.wikimedia@gmail.com",
+		"web": "https://github.com/Benestar"
+	},
+	"demos": [
+		"https://tools.wmflabs.org/bene/ask/"
+	],
+	"license": "GNU GPL v2+",
+	"scripts": {
+		"test": "grunt test"
+	},
+	"devDependencies": {
+		"qunit": "~0.5.15",
+		"grunt": "~0.4.2",
+		"grunt-contrib-qunit": "~0.2.1",
+		"grunt-jsonlint": "~1.0.4",
+		"grunt-contrib-jshint": "~0.7.2",
+		"qunitjs": "~1.11.0"
+	}
 }
