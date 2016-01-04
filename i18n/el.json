@@ -1,0 +1,15 @@
+{
+	"title": "Ρώτησε το Wikidata!",
+	"intro": "Γράψε την ερώτηση σου στο παραπάνω κουτί και πάτησε Enter  input box above and press enter.",
+	"enterQuestion": "Δώσε την ερώτησή σου εδώ",
+	"language": "Γλώσσα: ",
+	"chooseEntity": "Παρακαλώ επιλέξε μια οντότητα του τύπου __type__",
+	"cancel": "ακύρωση",
+	"alsoKnown": "Γνωστό και ως: ",
+	"and": "και",
+	"unparsable": "Η ερώτηση δεν μπορούσε να αναλυθεί.",
+	"propertynotfound": "Η ιδιότητα \"__property__\" δεν βρέθηκε.",
+	"nodata": "Δεν υπάρχουν δεδομένα για __subject__.",
+	"notformatted": "Τα αποτελέσματα δεν μπόρεσαν να διαμορφωθούν.",
+	"itemnotfound": "Το αντικείμενο \"__item__\" δεν βρέθηκε."
+}
