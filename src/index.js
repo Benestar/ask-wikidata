@@ -23,14 +23,14 @@
 
 	$( function() {
 		ask.entityChooser( entityChooser );
-		$( '#question' ).val( location.hash.slice( 1 ) );
+		$( '#question' ).val( decodeURIComponent( location.hash.slice( 1 ) ) );
 
 		// Question form submit handler
 		$( '#question-form' ).submit( function() {
 			setLoading( true );
 			$( '#details' ).text( '' );
 			var question = $( '#question' ).val();
-			location.hash = '#' + question;
+			location.hash = '#' + encodeURIComponent( question );
 			handleQuestion( question );
 		} );
 
